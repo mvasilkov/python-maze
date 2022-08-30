@@ -65,10 +65,10 @@ class Cell:
         return cell in self.links
 
     def neighbors(self):
-        """ Return a list of all cells neighboring this cell 
+        """ Return a list of all cells neighboring this cell
         """
         n = []
-        if self.cellNorth: n.append(self.cellNorth) 
+        if self.cellNorth: n.append(self.cellNorth)
         if self.cellSouth: n.append(self.cellSouth)
         if self.cellWest: n.append(self.cellWest)
         if self.cellEast: n.append(self.cellEast)
@@ -78,10 +78,10 @@ class Cell:
         s = "("+str(self.row)+", "+str(self.column)+")"
         return s
 
-if __name__ == "__main__":
-    c1 = Cell(0,0).link(Cell(1,1)).link(Cell(2,2))
-    print c1.neighbors()
-    for c2 in c1.getLinks():
-        print c2, 
-    print
-    print Cell(1,1).neighbors()
+# if __name__ == "__main__":
+#     c1 = Cell(0,0).link(Cell(1,1)).link(Cell(2,2))
+#     print c1.neighbors()
+#     for c2 in c1.getLinks():
+#         print c2,
+#     print
+#     print Cell(1,1).neighbors()

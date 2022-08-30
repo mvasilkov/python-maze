@@ -25,8 +25,8 @@ furnished to do so, subject to the following conditions:
 """
 
 class Distances:
-    """ This object holds information on the distance of all the cells from 
-    this cell. 'self.root' holds the reference to this cell. 
+    """ This object holds information on the distance of all the cells from
+    this cell. 'self.root' holds the reference to this cell.
     """
     def __init__(self, root):
         self.root = root
@@ -43,7 +43,7 @@ class Distances:
 
     def show(self):
         for cell in self.cells:
-            print cell, self.cells[cell]
+            print(cell, self.cells[cell])
 
     def get_cells(self):
         return self.cells.keys()

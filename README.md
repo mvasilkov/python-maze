@@ -1,13 +1,10 @@
 # aMAZEd
 
-Implementation of various maze generation algorithms in python. 
+Implementation of various maze generation algorithms in Python.
 
 > Source: [Mazes for Programmers][REF1] by Jamis Buck
 
-#### Python package prequisites
-* argparse
-* random
-* Pygame
+This fork is updated to run on Python 3.
 
 ## Usage
 

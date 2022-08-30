@@ -42,10 +42,10 @@ COLOR_LIGHTSEAGREEN = (32, 178, 170)
 class MazeDraw:
     def __init__(self, grid, title):
         self.nRows, self.nColumns = grid.dimensions()
-        self.CW = 20
-        self.CH = 20
+        self.CW = 12
+        self.CH = 12
         self.XMARGIN = 20
-        self.YMARGIN = 120 
+        self.YMARGIN = 120
         self.WW = self.CW * self.nColumns + self.XMARGIN
         self.WH = self.CH * self.nRows + self.YMARGIN
         self.grid = grid
@@ -68,7 +68,7 @@ class MazeDraw:
         for row in self.grid.each_row():
             xoff = self.XMARGIN/2 # y offset
             for cell in row:
-                if cell is not None: 
+                if cell is not None:
                     #if self.grid.crumbs[cell] is not None:
                     #    pygame.draw.circle(SURFACE, COLOR_CORAL, (xoff+self.CW/2, yoff+self.CH/2), 2, 0)
                     if not cell.isLinked(cell.cellNorth):

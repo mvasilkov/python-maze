@@ -36,7 +36,7 @@ class SidewinderMaze:
     """
     def __init__(self):
         pass
-    
+
     @staticmethod
     def create(grid):
         """
@@ -44,9 +44,9 @@ class SidewinderMaze:
 
         This algorithm is an improvement over the Binary tree method. Instead
         of deciding to link N or E each turn, we create a "run" of cells in each
-        row. We decide to end the run probabilistically (1/4 probability) each 
-        turn. At the end of the run we choose a cell from a run of cells 
-        randomly, and link this cell to its North neighbor. 
+        row. We decide to end the run probabilistically (1/4 probability) each
+        turn. At the end of the run we choose a cell from a run of cells
+        randomly, and link this cell to its North neighbor.
 
         This algorithm also generates "perfect" mazes. The bias'es here are -
         a. Unbroken corridor at the top, same as in Binary tree
@@ -71,34 +71,34 @@ class SidewinderMaze:
                     member = run[idx]
                     if member.cellNorth is not None:
                         member.link(member.cellNorth)
-                    # Clear out the cells collected in the previus run. 
+                    # Clear out the cells collected in the previus run.
                     del run[:]
                 else:
                     # By default every cell is linked to its eastern neighbor
                     cell.link(cell.cellEast)
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument("-d", "--distance_grid", action="store_true")
-    group.add_argument("-s", "--solution_grid", action="store_true")
-    group.add_argument("-g", "--grid", action="store_true")
-    parser.add_argument("r", type=int, help="Number of rows")
-    parser.add_argument("c", type=int, help="Number of columns")
-    args = parser.parse_args()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser()
+#     group = parser.add_mutually_exclusive_group()
+#     group.add_argument("-d", "--distance_grid", action="store_true")
+#     group.add_argument("-s", "--solution_grid", action="store_true")
+#     group.add_argument("-g", "--grid", action="store_true")
+#     parser.add_argument("r", type=int, help="Number of rows")
+#     parser.add_argument("c", type=int, help="Number of columns")
+#     args = parser.parse_args()
 
-    nRows = args.r
-    nColumns = args.c
-    if args.distance_grid:
-        g = DistanceGrid(nRows, nColumns)
-        SidewinderMaze.create(g)
-        g.compute_distances(g[0,0])
-    elif args.solution_grid:
-        g = SolutionGrid(nRows, nColumns)
-        SidewinderMaze.create(g)
-        g.solve(g[0,0], g[nRows-1, nColumns-1])
-    else:
-        g = Grid(nRows, nColumns)
-        SidewinderMaze.create(g)
+#     nRows = args.r
+#     nColumns = args.c
+#     if args.distance_grid:
+#         g = DistanceGrid(nRows, nColumns)
+#         SidewinderMaze.create(g)
+#         g.compute_distances(g[0,0])
+#     elif args.solution_grid:
+#         g = SolutionGrid(nRows, nColumns)
+#         SidewinderMaze.create(g)
+#         g.solve(g[0,0], g[nRows-1, nColumns-1])
+#     else:
+#         g = Grid(nRows, nColumns)
+#         SidewinderMaze.create(g)
 
-    print g
+#     print g

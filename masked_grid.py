@@ -38,14 +38,14 @@ class MaskedGrid(Grid):
     def prepare_grid(self):
         grid = [[Cell(row, col) if self.mask[row, col] else None for col in range(self.columns)] for row in range(self.rows)]
         return grid
-                                                                
+
     def random_cell(self):
         row, col = self.mask.random_location()
         return self.grid[row][col]
 
-if __name__ == "__main__":
-    mask = Mask(3,4)
-    mask[2, 3] = False
-    mask[0, 2] = False
-    mg = MaskedGrid(mask)
-    print mg.random_cell()
+# if __name__ == "__main__":
+#     mask = Mask(3,4)
+#     mask[2, 3] = False
+#     mask[0, 2] = False
+#     mg = MaskedGrid(mask)
+#     print mg.random_cell()

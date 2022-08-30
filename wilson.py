@@ -41,7 +41,7 @@ class Wilson:
     """
     def __init__(self):
         pass
-    
+
     @staticmethod
     def create(grid):
         def sample(lst):
@@ -49,7 +49,7 @@ class Wilson:
             if len(lst) == 0:
                 return None
             return choice(lst)
-        
+
         # Main implementation start here
         #
 
@@ -57,7 +57,7 @@ class Wilson:
         unvisited = []
         for cell in grid.each_cell():
             unvisited.append(cell)
-        
+
         # Choose a starting cell at random and mark it as visited
         first = sample(unvisited)
         unvisited.remove(first)
@@ -73,7 +73,7 @@ class Wilson:
             # Choose a cell from the unvisited cells at random and add it to the run path.
             cell = sample(unvisited)
             path = [cell]
-            
+
             # Keep finding random neighbors till we hit a visited cell
             while cell in unvisited:
                 neighbor_cell = sample(cell.neighbors())
@@ -91,28 +91,28 @@ class Wilson:
                     unvisited.remove(prev)
                 prev = cell
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument("-d", "--distance_grid", action="store_true", help="print distances from (0, 0)")
-    group.add_argument("-s", "--solution_grid", action="store_true")
-    group.add_argument("-g", "--grid", action="store_true")
-    parser.add_argument("r", type=int, help="Number of rows")
-    parser.add_argument("c", type=int, help="Number of columns")
-    args = parser.parse_args()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser()
+#     group = parser.add_mutually_exclusive_group()
+#     group.add_argument("-d", "--distance_grid", action="store_true", help="print distances from (0, 0)")
+#     group.add_argument("-s", "--solution_grid", action="store_true")
+#     group.add_argument("-g", "--grid", action="store_true")
+#     parser.add_argument("r", type=int, help="Number of rows")
+#     parser.add_argument("c", type=int, help="Number of columns")
+#     args = parser.parse_args()
 
-    nRows = args.r
-    nColumns = args.c
-    if args.distance_grid:
-        g = DistanceGrid(nRows, nColumns)
-        Wilson.create(g)
-        g.compute_distances(g[0,nColumns-1])
-    elif args.solution_grid:
-        g = SolutionGrid(nRows, nColumns)
-        Wilson.create(g)
-        g.solve(g[0,0], g[nRows-1, nColumns-1])
-    else:
-        g = Grid(nRows, nColumns)
-        Wilson.create(g)
+#     nRows = args.r
+#     nColumns = args.c
+#     if args.distance_grid:
+#         g = DistanceGrid(nRows, nColumns)
+#         Wilson.create(g)
+#         g.compute_distances(g[0,nColumns-1])
+#     elif args.solution_grid:
+#         g = SolutionGrid(nRows, nColumns)
+#         Wilson.create(g)
+#         g.solve(g[0,0], g[nRows-1, nColumns-1])
+#     else:
+#         g = Grid(nRows, nColumns)
+#         Wilson.create(g)
 
-    print g
+#     print g

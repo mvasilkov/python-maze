@@ -52,9 +52,9 @@ class BinaryTreeMaze:
                 neighbor = neighbors[index]
                 cell.link(neighbor)
 
-if __name__ == "__main__":
-    nRows = input("Enter number of rows: ")
-    nColumns = input("Enter number of columns: ")
-    g = Grid(nRows, nColumns)
-    BinaryTreeMaze.create(g)
-    print g
+# if __name__ == "__main__":
+#     nRows = input("Enter number of rows: ")
+#     nColumns = input("Enter number of columns: ")
+#     g = Grid(nRows, nColumns)
+#     BinaryTreeMaze.create(g)
+#     print g

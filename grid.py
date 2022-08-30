@@ -54,7 +54,7 @@ class Grid(object):
         """
         for row in self.each_row():
             for cell in row:
-                # Need the if clause for masked grids where a cell might or not 
+                # Need the if clause for masked grids where a cell might or not
                 # be present at a specific (row, column)
                 if cell:
                     yield cell
@@ -82,7 +82,7 @@ class Grid(object):
         return None
 
     def grid_cells(self):
-        """ Print the grid in a way where each grid cell shows the cell 
+        """ Print the grid in a way where each grid cell shows the cell
         coordinates """
         s = ""
         for row in range(self.rows):
@@ -107,8 +107,8 @@ class Grid(object):
             bottom = '+'
             for cell in row:
                 if cell is None:
-                    # This clause handles the case where there is no cell object 
-                    # at the specified location because it has been masked 
+                    # This clause handles the case where there is no cell object
+                    # at the specified location because it has been masked
                     cell = Cell(-1, -1)
                 body = '{:3s}'.format(self.contents_of(cell))
                 east_boundary = ' ' if cell.isLinked(cell.cellEast) else '|'
@@ -119,30 +119,28 @@ class Grid(object):
             output = output + top + '\n'
             output = output + bottom + '\n'
         return output
-                
-if __name__ == "__main__":
-    """
-    Unit tests
-    """
-    print Grid(10, 10)
-    for row in Grid(4,4).prepare_grid():
-        print row
 
-    for cell in Grid(4,4).each_cell():
-        print cell
+# if __name__ == "__main__":
+#     """
+#     Unit tests
+#     """
+#     print Grid(10, 10)
+#     for row in Grid(4,4).prepare_grid():
+#         print row
 
-    print
-    g = Grid(4, 4)
-    print g
-    print g[1,2]
-    print "Neighbors of g[1,2]"
-    for cell in g[1,2].neighbors():
-        print cell
-    print "Neighbors of g[3,3]"
-    for cell in g[3,3].neighbors():
-        print cell
+#     for cell in Grid(4,4).each_cell():
+#         print cell
 
-    print "A random cell"
-    print g.random_cell()
-    
+#     print
+#     g = Grid(4, 4)
+#     print g
+#     print g[1,2]
+#     print "Neighbors of g[1,2]"
+#     for cell in g[1,2].neighbors():
+#         print cell
+#     print "Neighbors of g[3,3]"
+#     for cell in g[3,3].neighbors():
+#         print cell
 
+#     print "A random cell"
+#     print g.random_cell()

@@ -30,10 +30,10 @@ from distance_grid   import DistanceGrid
 import argparse
 import random
 
-class AldousBroder: 
+class AldousBroder:
     """ This algorithm picks up a random cell from the grid,
     makes it the starting point and then randomly starts moving to the next
-    neighbor, and then the next and so on until all the cells are visited 
+    neighbor, and then the next and so on until all the cells are visited
     """
 
     def __init__(self):
@@ -60,30 +60,30 @@ class AldousBroder:
             # If the chosen neighbor is not visited then link the neighbor with
             # the current cell, mark it visited, and move to neighbor. If the
             # neighbor is already visited then simply move to that neighbor
-            # *without linking with the current cell*. 
+            # *without linking with the current cell*.
             if neighbor not in visited_cells:
                 current_cell.link(neighbor)
                 visited_cells.add(neighbor)
             current_cell = neighbor
 
 # Unit tests for Aldous-Broder
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument("-d", "--distance_grid", action="store_true")
-    group.add_argument("-g", "--grid", action="store_true")
-    parser.add_argument("r", type=int, help="Number of rows")
-    parser.add_argument("c", type=int, help="Number of columns")
-    args = parser.parse_args()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser()
+#     group = parser.add_mutually_exclusive_group()
+#     group.add_argument("-d", "--distance_grid", action="store_true")
+#     group.add_argument("-g", "--grid", action="store_true")
+#     parser.add_argument("r", type=int, help="Number of rows")
+#     parser.add_argument("c", type=int, help="Number of columns")
+#     args = parser.parse_args()
 
-    nRows = args.r
-    nColumns = args.c
-    if args.distance_grid:
-        g = DistanceGrid(nRows, nColumns)
-        AldousBroder.create(g)
-        g.compute_distances(g[0,0])
-    else:
-        g = Grid(nRows, nColumns)
-        AldousBroder.create(g)
+#     nRows = args.r
+#     nColumns = args.c
+#     if args.distance_grid:
+#         g = DistanceGrid(nRows, nColumns)
+#         AldousBroder.create(g)
+#         g.compute_distances(g[0,0])
+#     else:
+#         g = Grid(nRows, nColumns)
+#         AldousBroder.create(g)
 
-    print g
+#     print g

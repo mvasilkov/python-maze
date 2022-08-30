@@ -43,7 +43,7 @@ class Backtrack:
     @staticmethod
     def create(grid):
         """ Implementation for the backtracking method
-        
+
         This method produces a grid with no bias. It does require auxilliary
         storage that is proportional to the size of the grid. Runtime
         complexity involves visiting each cell in the grid exactly twice.
@@ -53,7 +53,7 @@ class Backtrack:
             if len(lst) == 0:
                 return None
             return choice(lst)
-        
+
         # Main algorithm
         stack = []
         # Choose a starting cell at random
@@ -62,7 +62,7 @@ class Backtrack:
 
         visited = set()
         visited.add(current_cell)
-        
+
         while len(stack) > 0:
             # Choose an unvisited neighbor at random
             neighbors = [cell for cell in current_cell.neighbors() if cell not in visited]
@@ -79,48 +79,47 @@ class Backtrack:
                 stack.append(neighbor_cell)
                 current_cell = neighbor_cell
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument("-g", "--grid", action="store_true", help="Draw an ascii maze only")
-    group.add_argument("-r", "--draw", action="store_true", help="Draw a maze image only")
-    group.add_argument("-d", "--distance_grid", action="store_true", help="Draw a maze with distances from (0,0) marked")
-    group.add_argument("-s", "--solution_grid", action="store_true", help="Draw a maze with solution")
-    group.add_argument("-m", "--masked_grid", action="store_true", help="Draw a maze with solution")
-    parser.add_argument("r", type=int, help="Number of rows")
-    parser.add_argument("c", type=int, help="Number of columns")
-    args = parser.parse_args()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser()
+#     group = parser.add_mutually_exclusive_group()
+#     group.add_argument("-g", "--grid", action="store_true", help="Draw an ascii maze only")
+#     group.add_argument("-r", "--draw", action="store_true", help="Draw a maze image only")
+#     group.add_argument("-d", "--distance_grid", action="store_true", help="Draw a maze with distances from (0,0) marked")
+#     group.add_argument("-s", "--solution_grid", action="store_true", help="Draw a maze with solution")
+#     group.add_argument("-m", "--masked_grid", action="store_true", help="Draw a maze with solution")
+#     parser.add_argument("r", type=int, help="Number of rows")
+#     parser.add_argument("c", type=int, help="Number of columns")
+#     args = parser.parse_args()
 
-    nRows = args.r
-    nColumns = args.c
-    if args.distance_grid:
-        g = DistanceGrid(nRows, nColumns)
-        Backtrack.create(g)
-        g.compute_distances(g[0,0])
-        print g
-    elif args.solution_grid:
-        g = SolutionGrid(nRows, nColumns)
-        Backtrack.create(g)
-        g.solve(g[0,0], g[nRows-1, nColumns-1])
-        print g
-    elif args.grid:
-        g = Grid(nRows, nColumns)
-        Backtrack.create(g)
-        print g
-    elif args.masked_grid:
-        # m = Mask(nRows, nColumns)
-        # m[0, 0] = False
-        # m[1, 1] = False
-        # m[2, 2] = False
-        # m[3, 3] = False
-        # m = Mask.from_image('maze_text.png')
-        m = Mask.from_image('images/templates/circle.png')
-        g = MaskedGrid(m)
-        Backtrack.create(g)
-        MazeDraw(g, "BT").draw()
-    elif args.draw:
-        g = SolutionGrid(nRows, nColumns)
-        Backtrack.create(g)
-        g.solve(g[0,0], g[nRows-1, nColumns-1])
-        MazeDraw(g, "Backtracking Method").draw()
-
+#     nRows = args.r
+#     nColumns = args.c
+#     if args.distance_grid:
+#         g = DistanceGrid(nRows, nColumns)
+#         Backtrack.create(g)
+#         g.compute_distances(g[0,0])
+#         print g
+#     elif args.solution_grid:
+#         g = SolutionGrid(nRows, nColumns)
+#         Backtrack.create(g)
+#         g.solve(g[0,0], g[nRows-1, nColumns-1])
+#         print g
+#     elif args.grid:
+#         g = Grid(nRows, nColumns)
+#         Backtrack.create(g)
+#         print g
+#     elif args.masked_grid:
+#         # m = Mask(nRows, nColumns)
+#         # m[0, 0] = False
+#         # m[1, 1] = False
+#         # m[2, 2] = False
+#         # m[3, 3] = False
+#         # m = Mask.from_image('maze_text.png')
+#         m = Mask.from_image('images/templates/circle.png')
+#         g = MaskedGrid(m)
+#         Backtrack.create(g)
+#         MazeDraw(g, "BT").draw()
+#     elif args.draw:
+#         g = SolutionGrid(nRows, nColumns)
+#         Backtrack.create(g)
+#         g.solve(g[0,0], g[nRows-1, nColumns-1])
+#         MazeDraw(g, "Backtracking Method").draw()

@@ -66,7 +66,7 @@ class Mask:
                 else:
                     mask[row, col] = True
         return mask
-        
+
     def random_location(self):
         while True:
             row = randint(0, self.n_rows-1)
@@ -74,12 +74,12 @@ class Mask:
             if self.bits[row][col]:
                 return row, col
 
-if __name__ == "__main__":
-    m = Mask(3, 4)
-    for row in range(0, 3):
-        for col in range(0, 4):
-            m[row, col] = False
-    m[1,2] = True
-    print m
-    print m.count()
-    print m.random_location()
+# if __name__ == "__main__":
+#     m = Mask(3, 4)
+#     for row in range(0, 3):
+#         for col in range(0, 4):
+#             m[row, col] = False
+#     m[1,2] = True
+#     print m
+#     print m.count()
+#     print m.random_location()
